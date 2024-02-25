@@ -12,6 +12,11 @@ from query import db_connect, find_point, find_shortest_route, db_disconnect
 app = Flask(__name__)
 
 
+@app.route('/')
+def home():
+    return("Hello, navigators!")
+
+
 @app.route('/<string:waypoint>/')
 def find(waypoint):
     connection = db_connect()
