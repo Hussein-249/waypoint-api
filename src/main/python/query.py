@@ -33,7 +33,9 @@ def find_point(waypoint, connection):
 
         # return res
 
-        return json.dump(res)
+        # return json.dump(res)
+
+        return json.dumps(res)
 
     except Exception as e:
         print("Unable to execute query or find waypoint."

@@ -1,5 +1,5 @@
 import math
 
 
-def abs_distance():
-    return 0
+def abs_distance(pa, pb):
+    return math.dist(pa, pb)

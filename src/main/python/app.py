@@ -3,7 +3,7 @@ import json
 from flask import Flask
 from flask import jsonify
 
-from json import dump
+from json import dump # try using this to fix dictionary problem
 
 import globallog
 from query import db_connect, find_point, find_shortest_route, db_disconnect
@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return("Hello, navigators!")
+    return "<h1>Hello, navigators!</h1>"
 
 
 @app.route('/<string:waypoint>/')
@@ -25,9 +25,7 @@ def find(waypoint):
 
     db_disconnect(connection)
 
-    globallog.log_message("User get request sent.")
-
-
+    globallog.log_message("User GET request sent.")
 
     return jsonify(results)
 
