@@ -1,8 +1,6 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-import json
-
 
 def db_connect():
     try:
@@ -21,21 +19,20 @@ def db_connect():
 
 def find_point(waypoint, connection):
     try:
+
         cur = connection.cursor(cursor_factory=RealDictCursor)
 
         query_string = f"SELECT * FROM canada WHERE wpname = %s"    # don't directly include variables in query
 
         cur.execute(query_string, (waypoint,))  # prevent SQL injection attacks
 
-        res = cur.fetchall()
+        res = cur.fetchone()
 
         cur.close()
 
-        # return res
+        db_disconnect(connection)
 
-        # return json.dump(res)
-
-        return json.dumps(res)
+        return res
 
     except Exception as e:
         print("Unable to execute query or find waypoint."
@@ -43,6 +40,7 @@ def find_point(waypoint, connection):
 
 
 def find_shortest_route(origin, destination, connection):
+    # DOES NOT WORK
     # need to implement typechecking, changes based on whether coord, name, or waypt
     cur = connection.cursor(cursor_factory=RealDictCursor)
     all_points_between = f"SELECT * FROM canada WHERE wpname = %s"    # don't directly include variables in query

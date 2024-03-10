@@ -1,9 +1,5 @@
-import json
-
 from flask import Flask
 from flask import jsonify
-
-from json import dump # try using this to fix dictionary problem
 
 import globallog
 from query import db_connect, find_point, find_shortest_route, db_disconnect

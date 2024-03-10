@@ -10,22 +10,6 @@ def create_database(name: str):
                                                port="5432")
         postgres_connection.autocommit = True
 
-        # dbcursor = postgres_connection.cursor()
-
-        # postgres_query = '''CREATE database ''' + name
-
-        # dbcursor.execute(postgres_query)
-
-        # print(name + " created")
-
-        # dbcursor.close()
-        #
-        # postgres_connection.close()
-
-        # postgres_connection2 = psycopg2.connect(database=name, user="postgres",
-        #                                         password="postgres", host="localhost",
-        #                                         port="5432")
-
         return postgres_connection
 
     except Exception as e:
@@ -82,6 +66,6 @@ conn = create_database("Waypoints")
 
 create_table("Canada", conn)
 
-add_from_csv("../resources/cantemp.csv", conn)
+add_from_csv("../resources/CANADA_WAYPTS.csv", conn)
 
 conn.close()

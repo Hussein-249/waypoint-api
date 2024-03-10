@@ -33,7 +33,7 @@ def menu():
     print(f" 1 view files in current directory | 2 Read a csv file")
     print_working_dir()
 
-    read_csv("../resources/cantemp.csv")
+    read_csv("../resources/CANADA_WAYPTS.csv")
     return 0
 
 

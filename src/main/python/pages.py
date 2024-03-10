@@ -1,8 +1,9 @@
-from flask import blueprints
+from flask import Blueprints
 
 
 bp = Blueprints("pages", __name__)
 
+
 @bp.route('/about')
-def aboutpage():
-    return ('This is the about page.')
+def about_page():
+    return f'This is the about page.'
