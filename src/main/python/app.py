@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import jsonify
+from flask import Flask, jsonify, request
 
 import globallog
 from query import db_connect, find_point, find_shortest_route, db_disconnect
@@ -13,15 +12,23 @@ def home():
     return "<h1>Hello, navigators!</h1>"
 
 
-@app.route('/<string:waypoint>/')
-def find(waypoint):
-    connection = db_connect()
+@app.route('/search')
+def search():
+    origin = request.args.get('start')
+    destination = request.args.get('stop')
 
-    results = find_point(waypoint.upper(), connection)
+    if not destination:
+        connection = db_connect()
 
-    db_disconnect(connection)
+        results = find_point(origin.upper(), connection)
 
-    globallog.log_message("User GET request sent.")
+        db_disconnect(connection)
+
+        globallog.log_message("User GET request sent.")
+
+    else:
+        #placeholder
+        results = {"name": "John", "age": 30}
 
     return jsonify(results)
 

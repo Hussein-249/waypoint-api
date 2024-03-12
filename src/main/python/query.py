@@ -43,6 +43,7 @@ def find_shortest_route(origin, destination, connection):
     # DOES NOT WORK
     # need to implement typechecking, changes based on whether coord, name, or waypt
     cur = connection.cursor(cursor_factory=RealDictCursor)
+
     all_points_between = f"SELECT * FROM canada WHERE wpname = %s"    # don't directly include variables in query
 
     origin_query = f"SELECT lon, lat FROM canada WHERE wpname = %s"  # don't directly include variables in query
