@@ -2,11 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>WAYPI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
+    <title>Waypoint API</title>
 </head>
 <body>
-    <h1>The Waypoint API</h1>
-    <h2>Hello, navigators!</h2>
+
+    <div class="horizontal-menu" id="horizontal-menu">
+        <div class="menu-items">
+            <a href="index.html">API</a>
+            <a href="about.html">ABOUT</a>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="api-row">
+
+            <div class="block" id="api-wrapper">
+                <h1>Waypoint API</h1>
+                 <form>
+                  <label for="origin">Origin:</label>
+                     <br>
+                  <input type="text" id="origin" name="origin">
+                     <br>
+                  <label for="lname">Destination:</label>
+                     <br>
+                  <input type="text" id="lname" name="lname">
+                </form>
+            </div>
+        </div>
+
+        <div class="block" id="map-wrapper">
+            <h1>Map</h1>
+        </div>
+
+    </div>
 
 </body>
 </html>

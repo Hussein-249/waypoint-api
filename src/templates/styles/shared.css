@@ -1,0 +1,64 @@
+:root {
+    --main-bg-colour: rgb(22, 22, 22);
+    --main-div-colour: #f5fdff;
+}
+
+html {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-bg-colour);
+}
+
+.horizontal-menu {
+    min-height: 10%;
+    display: flex;
+    width: 100%;
+    color: var(--main-div-colour);
+
+    padding-top: 20px;
+}
+.menu-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    transition: transform 0.3s ease;
+
+    font-size: clamp(1rem, 2vw + 0.75rem, 1.5rem);
+}
+
+.menu-items a:visited {
+    color: rgb(249, 243, 234);
+    text-decoration: none; /* Removing underline */
+    color: inherit;
+}
+
+
+.menu-items a:link {
+    color: rgb(249, 243, 234);
+    text-decoration: none; /* Removing underline */
+    color: inherit; /* Use the default text color for visited links */
+}
+
+.menu-items > * {
+    transition: transform 0.3s ease;
+}
+
+.menu-items > *:hover {
+    transform: scale(1.1);
+}
+
+.block {
+    background-color:var(--main-div-colour);
+}
+
