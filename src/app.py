@@ -13,7 +13,7 @@ def index():
 
 @app.route('/about')
 def about_page():
-    return f'This is the about page.'
+    return render_template('about.html')
 
 
 @app.route('/search')
@@ -49,5 +49,6 @@ def find_route(origin, destination):
 
 
 if __name__ == '__main__':
+    print("Development Server Running on http://127.0.0.1:105")
     app.run(host='0.0.0.0', port=105)
-    print("Running on http://127.0.0.1:105")
+

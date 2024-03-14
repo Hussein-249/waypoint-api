@@ -9,20 +9,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <title>Waypoint API</title>
 </head>
 <body>
 
     <div class="horizontal-menu" id="horizontal-menu">
         <div class="menu-items">
+            <img src="./media/icon-menu.png" id="menu-img"    alt="img" style="max-width: 50px; max-height: 50px"></img>
             <a href="index.html">API</a>
             <a href="about.html">ABOUT</a>
+            <a href="about.html">SOURCE CODE</a>
+            <img src="media/icon-moon.png" id="moon-img"    alt="img" style="max-width: 50px; max-height: 50px"></img>
         </div>
     </div>
 
     <div id="content">
         <div class="api-row">
-
             <div class="block" id="api-wrapper">
                 <h1>Waypoint API</h1>
                  <form>
@@ -30,17 +37,19 @@
                      <br>
                   <input type="text" id="origin" name="origin">
                      <br>
-                  <label for="lname">Destination:</label>
+                  <label for="dest">Destination:</label>
                      <br>
-                  <input type="text" id="lname" name="lname">
+                  <input type="text" id="dest" name="dest">
                 </form>
+
+            </div>
+            <div class="block" id="map-wrapper">
+                <h1>Map</h1>
+                <div class="button" id="download-button">
+                    <a>Download Maps</a>
+                </div>
             </div>
         </div>
-
-        <div class="block" id="map-wrapper">
-            <h1>Map</h1>
-        </div>
-
     </div>
 
 </body>

@@ -1,7 +1,8 @@
 @import url('shared.css');
 
 
-body {
+body
+{
     height: 100vh;
     background-size: 1000% 1000%;
     background-image: linear-gradient(-45deg, #e34e21, #d24379, #0198ce, #23d5ab);
@@ -9,51 +10,70 @@ body {
 }
 
 
-#content {
+#content
+{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    height: 100%;
 }
 
 
-.block {
-    background-color:var(--main-div-colour);
-    margin: 5%;
-}
-
-
-.api-row {
+.api-row
+{
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: row;
     width: 100%;
-
+    height: 100%;
 }
 
 
-#api-wrapper {
+#map-wrapper
+{
+    background-color: black;
+    color: var(--main-div-colour);
+}
+
+
+.block
+{
+    background-color:var(--main-div-colour);
     padding: 20px;
-    padding-bottom: 40px;
+    padding-left: 30px;
+    margin: 3%;
     border-radius: 20px;
-    width: 50%;
+    width: 45%;
+    height: 65%;
 }
 
 
-label {
+label
+{
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 
-h1 {
+h1
+{
     font-size: 40px;
 }
 
 
-@keyframes gradient {
+#download-button
+{
+    border: 2px solid var(--main-div-colour);
+    border-radius: 5px;
+    padding: 5px;
+    width: 25%;
+    text-align: center;
+}
+
+
+@keyframes gradient
+{
     0% {
       background-position: 0% 50%;
     }
