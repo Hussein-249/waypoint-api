@@ -1,9 +1,16 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, Blueprint, url_for
 
 import globallog
 from query import db_connect, find_point, find_shortest_route, db_disconnect
 
+
 app = Flask(__name__)
+
+blueprint = Blueprint('my_blueprint', __name__, static_folder='static', static_url_path='/static')
+
+app.register_blueprint(blueprint)
+
+print(app.blueprints['my_blueprint'].static_folder)
 
 
 @app.route('/')
@@ -31,7 +38,7 @@ def search():
         globallog.log_message("User GET request sent.")
 
     else:
-        #placeholder
+        # placeholder
         results = {"name": "John", "age": 30}
 
     return jsonify(results)
@@ -51,4 +58,3 @@ def find_route(origin, destination):
 if __name__ == '__main__':
     print("Development Server Running on http://127.0.0.1:105")
     app.run(host='0.0.0.0', port=105)
-

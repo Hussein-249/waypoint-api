@@ -1,9 +1,8 @@
-@import url('shared.css');
-
+@import url("/static/css/shared.css");
 
 body
 {
-    height: 100vh;
+height: 100vh;
     background-size: 1000% 1000%;
     background-image: linear-gradient(-45deg, #e34e21, #d24379, #0198ce, #23d5ab);
     animation: gradient 30s ease infinite;
@@ -90,3 +89,4 @@ h1
       background-position: 0% 50%;
     }
   }
+
