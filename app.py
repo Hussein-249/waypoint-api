@@ -1,16 +1,15 @@
-from flask import Flask, jsonify, request, render_template, Blueprint, url_for
+from flask import Flask, jsonify, request, render_template, Blueprint
 
 import globallog
+import Control
 from query import db_connect, find_point, find_shortest_route, db_disconnect
 
 
 app = Flask(__name__)
 
-blueprint = Blueprint('my_blueprint', __name__, static_folder='static', static_url_path='/static')
+blueprint = Blueprint('api_bp', __name__, static_folder='static', static_url_path='/static')
 
 app.register_blueprint(blueprint)
-
-print(app.blueprints['my_blueprint'].static_folder)
 
 
 @app.route('/')
@@ -27,6 +26,8 @@ def about_page():
 def search():
     origin = request.args.get('start')
     destination = request.args.get('stop')
+
+    control = Control
 
     if not destination:
         connection = db_connect()

@@ -7,6 +7,9 @@
     <link rel="stylesheet"  type='text/css' href="/static/css/shared.css">
 
     <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
     <title>Waypoint API</title>
 </head>
@@ -18,31 +21,48 @@
             <a href="index.html">API</a>
             <a href="about.html">ABOUT</a>
             <a href="about.html">SOURCE CODE</a>
-            <img src="/static/img/icon-moon.png" id="moon-img"    alt="img" style="height: 10px">
+            <img src="/static/img/icon-moon.png" id="moon-img"    alt="img" style="height: 30px">
         </div>
     </div>
 
     <div id="content">
         <div class="api-row">
+
             <div class="block" id="api-wrapper">
                 <h1>Waypoint API</h1>
-                 <form>
-                  <label for="origin">Origin:</label>
-                     <br>
-                  <input type="text" id="origin" name="origin">
-                     <br>
-                  <label for="dest">Destination:</label>
-                     <br>
-                  <input type="text" id="dest" name="dest">
-                </form>
 
+                <div class="horizontal" id="horizontal-api-div">
+                     <form>
+                      <label for="origin">Origin:</label>
+                         <br>
+                      <input type="text" id="origin" name="origin">
+                         <br>
+                      <label for="dest">Destination:</label>
+                         <br>
+                      <input type="text" id="dest" name="dest">
+                    </form>
+
+                    <div id="add-waypoints">
+                        <p>Add Waypoints</p>
+                        <div class="button" id="add-button">
+                            <a>+</a>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
+
             <div class="block" id="map-wrapper">
                 <h1>Map</h1>
+
+                <div>Waypoint Map</div>
+
                 <div class="button" id="download-button">
                     <a>Download Maps</a>
                 </div>
             </div>
+
         </div>
     </div>
 
