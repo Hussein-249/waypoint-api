@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, Blueprint
+from flask import Flask, jsonify, request, render_template, Blueprint, redirect, url_for
 
 import globallog
 import Control
@@ -22,11 +22,16 @@ def about_page():
     return render_template('about.html')
 
 
+@app.route('/submit_form', methods=['POST'])
+def submit_form():
+    origin = request.form['origin']
+    return redirect(url_for('search', start=origin))
+
+
 @app.route('/search')
 def search():
     origin = request.args.get('start')
     destination = request.args.get('stop')
-
     control = Control
 
     if not destination:

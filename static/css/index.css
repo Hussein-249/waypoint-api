@@ -72,6 +72,12 @@ h1
 }
 
 
+.button:hover
+{
+    cursor: pointer;
+}
+
+
 #download-button
 {
     border: 2px solid var(--main-div-colour);
@@ -82,13 +88,21 @@ h1
 }
 
 
-#add-button
+#add-button, #submit-button
 {
     border: 2px solid var(--main-font-colour);
     border-radius: 5px;
     padding: 5px;
     width: 50%;
     text-align: center;
+    background: var(--main-div-colour);
+
+}
+
+#add-button:hover, #submit-button:hover
+{
+    background: var(--main-font-colour);
+    color: var(--main-div-colour);
 }
 
 

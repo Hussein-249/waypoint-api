@@ -32,7 +32,7 @@
                 <h1>Waypoint API</h1>
 
                 <div class="horizontal" id="horizontal-api-div">
-                     <form>
+                     <form action="/submit_form" method="POST">
                       <label for="origin">Origin:</label>
                          <br>
                       <input type="text" id="origin" name="origin">
@@ -40,6 +40,8 @@
                       <label for="dest">Destination:</label>
                          <br>
                       <input type="text" id="dest" name="dest">
+<!--                         <input type="submit" value="Submit">-->
+                         <button type="submit" class="button" id="submit-button">Submit</button>
                     </form>
 
                     <div id="add-waypoints">
