@@ -18,3 +18,5 @@ def map_from_waypoint(lon, lat):
     plt.close(figure)
 
     return sendfile(buf, mimetype='image/png')
+
+    # return buf
