@@ -1,7 +1,15 @@
 import prettymaps as pm
-from flask import Flask, sendfile
-import matplotlib.pyplot as plt
-import io
+from flask import send_from_directory
+import os
+
+MAP_ID = 1000
+
+STATIC_FOLDER = os.path.join(os.getcwd(), 'static')
+
+MAP_FOLDER = os.path.join(STATIC_FOLDER, 'maps')
+
+if not os.path.exists(MAP_FOLDER):
+    os.makedirs(MAP_FOLDER)
 
 
 def map_from_waypoint(lon, lat):
@@ -10,13 +18,10 @@ def map_from_waypoint(lon, lat):
                            preset='minimal'
                            )
 
-    buf = io.BytesIO()
+    map_path = os.path.join(MAP_FOLDER, 'map.png')
 
-    plt.savefig(buf, format='png')
-    buf.seek(0)
+    # buf.seek(0)
 
-    plt.close(figure)
+    pm.save_fig(figure, map_path)
 
-    return sendfile(buf, mimetype='image/png')
-
-    # return buf
+    return send_from_directory(MAP_FOLDER, 'map.png')

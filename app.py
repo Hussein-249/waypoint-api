@@ -1,11 +1,9 @@
-from flask import Flask, jsonify, request, render_template, Blueprint, redirect, url_for, sendfile
+from flask import Flask, jsonify, request, render_template, Blueprint, redirect, url_for
 import io
 import globallog
 import Control
 from query import db_connect, find_point, find_shortest_route, db_disconnect
 from map import map_from_waypoint
-
-from flask import sendfile
 
 
 app = Flask(__name__)
@@ -28,7 +26,7 @@ def about_page():
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
     origin = request.form['origin']
-    return redirect(url_for('form-search', start=origin))
+    return redirect(url_for('form_search', start=origin))
 
 
 @app.route('/search')
@@ -53,7 +51,7 @@ def search():
     return jsonify(results)
 
 
-@app.route('/form-search')
+@app.route('/form_search')
 def form_search():
     origin = request.args.get('start')
     destination = request.args.get('stop')
@@ -81,9 +79,9 @@ def form_search():
 
     map_image = map_from_waypoint(lon, lat)
 
-    # return sendfile(io.BytesIO(map_image), mimetype='image/png')
+    image_url = url_for('static', filename='map.png')
 
-    return 0
+    return render_template('index.html', image_url=image_url)
 
 
 @app.route('/<string:origin>/<string:destination>/')
