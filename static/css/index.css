@@ -94,13 +94,12 @@ h1
     width: 50%;
     text-align: center;
     background: var(--main-div-colour);
-}
 
-
-#add-button:hover, #submit-button:hover
-{
-    background: var(--main-font-colour);
-    color: var(--main-div-colour);
+    & > :hover
+    {
+        background: var(--main-font-colour);
+        color: var(--main-div-colour);
+    }
 }
 
 

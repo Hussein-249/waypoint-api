@@ -1,21 +1,41 @@
 import psycopg2
+import os
 
 
-def create_database(name: str):
-    print("CREATING NEW DATABASE")
+class PostgresSetup:
+    def __init__(self, dbname):
+        self.name = dbname
 
-    try:
-        postgres_connection = psycopg2.connect(database="postgres", user="postgres",
-                                               password="postgres", host="localhost",
-                                               port="5432")
-        postgres_connection.autocommit = True
+    @staticmethod
+    def execute_sql_file(sql_filename: str, connection):
+        try:
+            cur = connection.cursor()
+            with open(sql_filename, 'r') as file:
+                sql_query = file.read().split(';') # NOT OPTIMAL, file.read() loads entire file into memory
+                # needs to be optimized
+                for query in sql_query:
+                    if query.strip():
+                        cur.execute(query)
+            connection.commit()
+            cur.close()
+        except Exception as e:
+            print(f'Exception occurred during reading an SQL file:\n{e}')
 
-        return postgres_connection
+        return
 
-    except Exception as e:
-        print("An error occurred whilst attempting to create the database."
-              f"\n Exception: {e}")
-        return None
+    def connect_postgres_database(self):
+        try:
+            postgres_connection = psycopg2.connect(database=self.name, user="postgres",
+                                                   password="postgres", host="localhost",
+                                                   port="5432")
+            postgres_connection.autocommit = True
+
+            return postgres_connection
+
+        except Exception as e:
+            print("An error occurred whilst attempting to create the database."
+                  f"\n Exception: {e}")
+            return None
 
 
 def create_table(table_name: str, connection):
@@ -62,9 +82,11 @@ def add_from_csv(filename: str, connection):
         cur.close()
 
 
-conn = create_database("Waypoints")
+postgresHandler = PostgresSetup("postgres")
 
-create_table("Canada", conn)
+conn = postgresHandler.connect_postgres_database()
+
+create_table("CanadaWaypoints", conn)
 
 add_from_csv("../resources/CANADA_WAYPTS.csv", conn)
 

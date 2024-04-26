@@ -15,6 +15,23 @@ This project is being developed with Python 3.11. Project requirements are liste
 
 The in-browser map is created using Leaflet.js through a CDN. No installation of Leaflet is required.
 
+# Execution Instructions
+- Ensure that PostgreSQL is installed an PostgreSQL server is running using the following PowerShell command:
+```powershell
+Get-Process | Where-Object { $_.ProcessName -eq "postgres" }
+```
+Or Bash:
+```bash
+pgrep postgres || pgrep postmaster 
+```
+- Clone this repository
+- Create a virtual environment using ```python -m venv venv```. This creates a venv folder that will contain the necessary libraries
+- Activate the virtual environment with ```venv\Scripts\activate```. The shell should now indicate you are in the virtual environment.
+- Install the requirements with ```pip install -r requirements.txt```
+
+[//]: # (- Start the application with ```python main.py```)
+- Once you are finished with the application, you can deactivate the virtual environment using ```deactivate```.
+
 # Development Checklists
 ### Core Features Supported
 - [x] Can query for individual waypoints via URL
