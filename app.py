@@ -1,9 +1,7 @@
 from flask import Flask, jsonify, request, render_template, Blueprint, redirect, url_for
 import io
 import globallog
-import Control
 from query import db_connect, find_point, find_shortest_route, db_disconnect
-from map import map_from_waypoint
 
 
 app = Flask(__name__)
@@ -15,6 +13,11 @@ app.register_blueprint(blueprint)
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+
+@app.route('/conventional')
+def conventional_website_view():
     return render_template('index.html')
 
 
@@ -33,7 +36,6 @@ def submit_form():
 def search():
     origin = request.args.get('start')
     destination = request.args.get('stop')
-    control = Control
 
     if not destination:
         connection = db_connect()
@@ -55,7 +57,6 @@ def search():
 def form_search():
     origin = request.args.get('start')
     destination = request.args.get('stop')
-    control = Control
 
     if not destination:
         connection = db_connect()
@@ -72,12 +73,8 @@ def form_search():
 
     globallog.log_message("Results created.")
 
-    globallog.log_message("Results created.")
-
     lon = 60
     lat = 55
-
-    map_image = map_from_waypoint(lon, lat)
 
     image_url = url_for('static', filename='map.png')
 
@@ -93,6 +90,27 @@ def find_route(origin, destination):
     db_disconnect(connection)
 
     return "Found route"
+
+
+@app.route('/error500')
+def force_error():
+    # Simulate a server error by dividing by zero (ZeroDivisionError)
+    result = 1 / 0
+    return render_template('error.html')
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('error.html', error_code=404, message='Page not found'), 404
+
+
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template(
+        'error.html',
+        error_code=500,
+        message='Internal Server Error'
+    ), 500
 
 
 if __name__ == '__main__':

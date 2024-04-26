@@ -1,26 +1,32 @@
+@import url('animations.css');
+
 :root
 {
-    --main-bg-colour: rgb(22, 22, 22);
+    /* colours */
+    --main-bg-colour: rgb(229, 235, 237);
     --main-div-colour: #f5fdff;
     --main-font-colour:  black;
+    /* font sizes */
+    --header-font-size: clamp(1rem, calc(1.75vw + 1vh), 1.6rem);
+    --subtitle-font-size: clamp(0.8rem, calc(1vw + 1vh), 1.25rem);
+    --paragraph-font-size: clamp(0.5rem, calc(0.8vw + 1.1vh), 1.2rem);
 }
-
 
 html
 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    scroll-behavior: smooth;
+  height: 100%;
+  font-family: "Hind", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-
-body {
+body
+{
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: var(--main-bg-colour);
 }
-
 
 .horizontal-menu
 {
@@ -30,9 +36,11 @@ body {
     color: var(--main-div-colour);
 }
 
-
 .menu-items
 {
+    padding-top: 10px;
+    padding-bottom: 5px;
+
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -40,44 +48,20 @@ body {
     text-decoration: none;
     color: var(--main-font-colour);
     width: 100%;
-    transition: transform 0.3s ease;
     font-size: clamp(1rem, 2vw + 0.5rem, 1.2rem);
     background-color: var(--main-div-colour);
-    border-radius: 50px;
-    border-top-left-radius: 0px; /* Leaves bottom left corner square */
-    border-top-right-radius: 0px; /* Leaves bottom right corner square */
 }
 
 
-.menu-items a:visited
+.menu-items a:visited, .menu-items a:link
 {
-    color: var(--main-font-colour);
+    color: var(--main-div-colour);
     text-decoration: none; /* Removing underline */
     color: inherit;
 }
 
 
-.menu-items a:link
-{
-    color: var(--main-font-colour);
-    text-decoration: none; /* Removing underline */
-    color: inherit; /* Use the default text color for visited links */
-}
-
-
-.menu-items > *
-{
-    transition: transform 0.3s ease;
-}
-
-
-.menu-items > *:hover
-{
-    transform: scale(1.1);
-}
-
-
 .block
 {
-    background-color:var(--main-div-colour);
+    background-color: var(--main-div-colour);
 }
