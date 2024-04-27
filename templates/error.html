@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Error</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"  type='text/css' href="/static/css/shared.css">
+    <link rel="stylesheet"  type='text/css' href="/static/css/animations.css">
+
+    <title>Error {{ error_code }}</title>
 </head>
 <body>
-    <h1>Error {{ error_code }}</h1>
+    <h1 class="short-typing">Error {{ error_code }}</h1>
     <p>{{ message }}</p>
 </body>
 </html>

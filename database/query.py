@@ -2,9 +2,9 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 
-def db_connect():
+def db_connect(dbname="postgres"):
     try:
-        postgres_connection = psycopg2.connect(database="postgres", user="postgres",
+        postgres_connection = psycopg2.connect(database=dbname, user="postgres",
                                                password="postgres", host="localhost",
                                                port="5432")
         postgres_connection.autocommit = True
@@ -59,8 +59,3 @@ def find_shortest_route(origin, destination, connection):
 
 def db_disconnect(connection):
     connection.close()
-
-
-def query_parse(fields: list):
-    # returns a json object, query results
-    return fields

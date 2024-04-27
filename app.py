@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, render_template, Blueprint, redirect, url_for
-import globallog
-from query import db_connect, query_single_point, find_shortest_route, db_disconnect
-
+from log import globallog
+from database.query import db_connect, query_single_point, db_disconnect
+from database.DataControl import DataControl
 
 app = Flask(__name__)
 
@@ -27,23 +27,28 @@ def about_page():
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
+    globallog.log_message("Form submitted (POST request)")
     origin = request.form['origin']
     return redirect(url_for('form_search', start=origin))
 
 
 @app.route('/search')
 def search():
+    globallog.log_message("User GET request sent.")
+
     origin = request.args.get('start')
     destination = request.args.get('stop')
 
     if not destination:
         connection = db_connect()
 
+        # connection = dc.connect_database()
+
+        # results = dc.find_single_point(origin.upper(), connection)
         results = query_single_point(origin.upper(), connection)
 
         db_disconnect(connection)
-
-        globallog.log_message("User GET request sent.")
+        # dc.disconnect_database(connection)
 
     else:
         # placeholder
@@ -82,12 +87,7 @@ def form_search():
 
 @app.route('/<string:origin>/<string:destination>/')
 def find_route(origin, destination):
-    connection = db_connect()
-
-    find_shortest_route(origin.upper(), destination.upper(), connection)
-
-    db_disconnect(connection)
-
+    # empty, keep for upcoming implementation
     return "Found route"
 
 

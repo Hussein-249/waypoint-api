@@ -1,3 +1,13 @@
+import os
+import sys
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+query_module_dir = os.path.dirname(os.path.join(script_dir, 'query.py'))
+sys.path.append(query_module_dir)
+
+# import query  # cannot move to top file due to the above code needed first
+
+
 class SingletonControlMeta(type):
     _instances = {}
 
@@ -9,23 +19,30 @@ class SingletonControlMeta(type):
             object.
             Prevents potential query conflicts.
         """
+        print("Call")
         if cls not in cls._instances:
-            cls._instances[cls] = super.__call__(*args, **kwargs)
+            print("adding to instances")
+            print(f"Creating {cls.__name__} instance")
+            cls._instances[cls] = super().__call__(*args, **kwargs)
         else:
-            raise RuntimeError("Singleton already instantiated, not allowed to use this class in current scope.")
+            return cls._instances[cls]
+            # raise RuntimeError("Singleton already instantiated, not allowed to use this class in current scope.")
+            # this is not how singletons work!!!
 
 
 class DataControl(metaclass=SingletonControlMeta):
-    import query
-
     def __init__(self):
-        pass
+        print("DataControl instance created")
+        from query import db_connect, query_single_point, db_disconnect
+        self.db_connect = db_connect
+        self.query_single_point = query_single_point
+        self.db_disconnect = db_disconnect
 
-    def __connect_database(self):
-        return self.query.db_connect()
+    def connect_database(self):
+        return self.db_connect()
 
-    def __find_single_point(self, waypoint, connection):
-        return self.query.query_single_point(waypoint, connection)
+    def find_single_point(self, waypoint, connection):
+        return self.query_single_point(waypoint, connection)
 
-    def __disconnect_database(self, connection):
-        return self.query.db_disconnect(connection)
+    def disconnect_database(self, connection):
+        return self.db_disconnect(connection)
