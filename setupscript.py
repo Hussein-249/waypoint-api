@@ -1,4 +1,3 @@
-import os
 
 
 def read_csv(filename: str) -> None:
@@ -15,25 +14,3 @@ def read_csv(filename: str) -> None:
             f.write(line)
 
     return None
-
-
-def menu():
-    print(f"Select a menu option:")
-    print(f" 1 view files in current directory | 2 Read a csv file")
-    print_working_dir()
-
-    read_csv("../resources/CANADA_WAYPTS.csv")
-    return 0
-
-
-def print_working_dir():
-    dir_files = os.listdir()
-
-    print(f"WORKING DIRECTORY:")
-    for file in dir_files:
-        if os.path.isfile(file):
-            print(file)
-
-
-if __name__ == '__main__':
-    menu()

@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request, render_template, Blueprint, redirect, url_for
-import io
 import globallog
-from query import db_connect, find_point, find_shortest_route, db_disconnect
+from query import db_connect, query_single_point, find_shortest_route, db_disconnect
 
 
 app = Flask(__name__)
@@ -40,7 +39,7 @@ def search():
     if not destination:
         connection = db_connect()
 
-        results = find_point(origin.upper(), connection)
+        results = query_single_point(origin.upper(), connection)
 
         db_disconnect(connection)
 
@@ -61,7 +60,7 @@ def form_search():
     if not destination:
         connection = db_connect()
 
-        results = find_point(origin.upper(), connection)
+        results = query_single_point(origin.upper(), connection)
 
         db_disconnect(connection)
 

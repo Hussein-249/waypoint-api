@@ -17,7 +17,7 @@ def db_connect():
         return None
 
 
-def find_point(waypoint, connection):
+def query_single_point(waypoint, connection):
     try:
 
         cur = connection.cursor(cursor_factory=RealDictCursor)
