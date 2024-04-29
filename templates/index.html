@@ -41,7 +41,7 @@
                 <h1>Waypoint API</h1>
 
                 <div class="horizontal" id="horizontal-api-div">
-                     <form action="/submit_form" method="POST">
+                    <form action="/submit_form" method="POST">
                       <label for="origin">Origin:</label>
                          <br>
                       <input type="text" id="origin" name="origin">
@@ -49,45 +49,19 @@
                       <label for="dest">Destination:</label>
                          <br>
                       <input type="text" id="dest" name="dest">
-<!--                         <input type="submit" value="Submit">-->
-                         <button type="submit" class="button" id="submit-button">Submit</button>
                     </form>
 
                     <div id="add-waypoints">
-                        <p>Add Waypoints</p>
                         <div class="button" id="add-button">
-                            <a>+</a>
+                            <a>+ Waypoint</a>
                         </div>
+                        <button type="submit" class="button" id="submit-button">Submit</button>
                     </div>
-
-
                 </div>
             </div>
-
             <div class="block" id="map-wrapper">
-                <h1>Map</h1>
-
-                <h2>Waypoint Map</h2>
+                <h1>Waypoint Map</h1>
                 <div id="leaflet-map" class="leaflet-map"></div>
-
-                <script>
-                    var map = L.map('leaflet-map').setView([51.505, -0.09], 13);
-
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    }).addTo(map);
-
-                    // Use Jinja templating to pass the results from Flask to JavaScript
-                    var results = {{ results | tojson | safe }};
-                    var marker = L.marker([results.lat, results.lon]).addTo(map);
-
-                    <!--    L.map('leaflet-map').setView([51.505, -0.09], 13)-->
-                    map.fitBounds(marker.getBounds());
-                </script>
-
-                <div class="button" id="download-button">
-                    <a>Download Maps</a>
-                </div>
             </div>
         </div>
     </div>

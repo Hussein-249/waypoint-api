@@ -1,16 +1,18 @@
 @import url('animations.css');
 
+
 :root
 {
     /* colours */
-    --main-bg-colour: rgb(229, 235, 237);
     --main-div-colour: #f5fdff;
     --main-font-colour:  black;
+    --second-div-colour: rgb(25, 25, 25);
     /* font sizes */
     --header-font-size: clamp(1rem, calc(1.75vw + 1vh), 1.6rem);
     --subtitle-font-size: clamp(0.8rem, calc(1vw + 1vh), 1.25rem);
     --paragraph-font-size: clamp(0.5rem, calc(0.8vw + 1.1vh), 1.2rem);
 }
+
 
 html
 {
@@ -20,21 +22,24 @@ html
   font-style: normal;
 }
 
+
 body
 {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--main-bg-colour);
+    background-color: var(--second-div-colour);
 }
+
 
 .horizontal-menu
 {
-    min-height: 10%;
+    min-height: 8%;
     display: flex;
     width: 100%;
     color: var(--main-div-colour);
 }
+
 
 .menu-items
 {
