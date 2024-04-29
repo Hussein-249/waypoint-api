@@ -14,3 +14,5 @@ def read_csv(filename: str) -> None:
             f.write(line)
 
     return None
+
+read_csv('CANWAYPOINTS.csv')

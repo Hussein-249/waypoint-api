@@ -50,7 +50,7 @@ def create_table(table_name: str, connection):
 
         create_canada = (
             f"CREATE TABLE {table_name}"
-            "(wpname varchar(5) PRIMARY KEY,lat varchar(20) NOT NULL, lon varchar(20) NOT NULL)"
+            "(wpname varchar(5) PRIMARY KEY,lat varchar(25) NOT NULL, lon varchar(25) NOT NULL)"
         )
 
         cur.execute(create_canada)
@@ -71,7 +71,7 @@ def add_from_csv(filename: str, connection):
     with open(filename, newline='\n') as csv_file:
 
         copy_data = """
-                COPY canada(wpname, lon, lat) FROM stdin WITH CSV HEADER
+                COPY CanadaWaypoints(wpname, lon, lat) FROM stdin WITH CSV HEADER
                 DELIMITER as ','
                 """
 
@@ -88,6 +88,6 @@ conn = postgresHandler.connect_postgres_database()
 
 create_table("CanadaWaypoints", conn)
 
-add_from_csv("../resources/CANADA_WAYPTS.csv", conn)
-
+# add_from_csv("../resources/CANADA_WAYPTS.csv", conn)
+add_from_csv("CANWAYPOINTS.csv", conn)
 conn.close()

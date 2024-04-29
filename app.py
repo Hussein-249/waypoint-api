@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request, render_template, Blueprint, redirect, url_for
 from log import globallog
-from database.query import db_connect, query_single_point, db_disconnect
 from database.DataControl import DataControl
 
 app = Flask(__name__)
@@ -8,6 +7,8 @@ app = Flask(__name__)
 blueprint = Blueprint('api_bp', __name__, static_folder='static', static_url_path='/static')
 
 app.register_blueprint(blueprint)
+
+dc = DataControl()
 
 
 @app.route('/')
@@ -29,7 +30,10 @@ def about_page():
 def submit_form():
     globallog.log_message("Form submitted (POST request)")
     origin = request.form['origin']
-    return redirect(url_for('form_search', start=origin))
+    connection = dc.connect_database()
+    results = dc.find_single_point(origin.upper(), connection)
+    dc.disconnect_database(connection)
+    return render_template('index.html', results=results)
 
 
 @app.route('/search')
@@ -40,49 +44,40 @@ def search():
     destination = request.args.get('stop')
 
     if not destination:
-        connection = db_connect()
-
-        # connection = dc.connect_database()
-
-        # results = dc.find_single_point(origin.upper(), connection)
-        results = query_single_point(origin.upper(), connection)
-
-        db_disconnect(connection)
-        # dc.disconnect_database(connection)
+        connection = dc.connect_database()
+        results = dc.find_single_point(origin.upper(), connection)
+        dc.disconnect_database(connection)
 
     else:
-        # placeholder
+        # placeholder for a more advanced function
         results = {"name": "John", "age": 30}
 
     return jsonify(results)
 
 
-@app.route('/form_search')
-def form_search():
-    origin = request.args.get('start')
-    destination = request.args.get('stop')
-
-    if not destination:
-        connection = db_connect()
-
-        results = query_single_point(origin.upper(), connection)
-
-        db_disconnect(connection)
-
-        globallog.log_message("User GET request sent.")
-
-    else:
-        # placeholder
-        results = {"name": "John", "age": 30}
-
-    globallog.log_message("Results created.")
-
-    lon = 60
-    lat = 55
-
-    image_url = url_for('static', filename='map.png')
-
-    return render_template('index.html', image_url=image_url)
+# @app.route('/form_search')
+# def form_search():
+#     origin = request.args.get('start')
+#     destination = request.args.get('stop')
+#
+#     if not destination:
+#         connection = dc.connect_database()
+#
+#         results = dc.find_single_point(origin.upper(), connection)
+#
+#         dc.disconnect_database(connection)
+#
+#         globallog.log_message("User GET request sent.")
+#
+#     else:
+#         # placeholder
+#         results = {"name": "John", "age": 30}
+#
+#     globallog.log_message("Results created.")
+#
+#     # send results to the page via AJAX?
+#
+#     return render_template('index.html')
 
 
 @app.route('/<string:origin>/<string:destination>/')
@@ -95,16 +90,17 @@ def find_route(origin, destination):
 def force_error():
     # Simulate a server error by dividing by zero (ZeroDivisionError)
     result = 1 / 0
+    del result
     return render_template('error.html')
 
 
 @app.errorhandler(404)
-def not_found_error(error):
+def not_found_error():
     return render_template('error.html', error_code=404, message='Page not found'), 404
 
 
 @app.errorhandler(500)
-def internal_server_error(error):
+def internal_server_error():
     return render_template(
         'error.html',
         error_code=500,

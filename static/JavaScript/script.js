@@ -1,13 +1,41 @@
+// importing jQuery
+import $ from "https://code.jquery.com/jquery-3.6.0.min.js";
 
 
-function renderMap(){
-    var mapDiv = document.getElementById('map-image')
+$(document).ready( () => {
+    $('#submit-button').click( (e) => {
+    e.preventDefault();
+    var origin = $('#origin').val();
+    var destination = $('#dest').val();
 
-    var img = new Image()
+     $.ajax({
+            url: '/submit_form',
+            type: 'GET',
+            data: {
+                origin: origin,
+                origin: destination
+            },
+            success: function(response) {
+                updateMap(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+    });
+});
 
-    img.onload = function() 
-    {
-        imgDiv.innerHTML = ''
-        imgDiv.appendChild(img)
-    }
+function updateMap()
+{
+    var map = L.map('leaflet-map').setView([51.505, -0.09], 13);
+
+    map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+    var marker = L.marker([response.lat, response.lon]).addTo(map);
+
+    map.fitBounds(marker.getBounds());
+
 }

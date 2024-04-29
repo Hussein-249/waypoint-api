@@ -2,7 +2,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 
-def db_connect(dbname="postgres"):
+def _db_connect(dbname="postgres"):
     try:
         postgres_connection = psycopg2.connect(database=dbname, user="postgres",
                                                password="postgres", host="localhost",
