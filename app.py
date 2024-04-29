@@ -8,6 +8,7 @@ blueprint = Blueprint('api_bp', __name__, static_folder='static', static_url_pat
 
 app.register_blueprint(blueprint)
 
+# declare a single instance of our singleton class
 dc = DataControl()
 
 
@@ -21,9 +22,9 @@ def conventional_website_view():
     return render_template('index.html')
 
 
-@app.route('/about')
-def about_page():
-    return render_template('about.html')
+@app.route('/documentation')
+def documentation_page():
+    return render_template('documentation.html')
 
 
 @app.route('/submit_form', methods=['POST'])

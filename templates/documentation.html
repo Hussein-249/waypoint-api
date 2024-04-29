@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type='text/css' href="/static/css/index.css">
+    <link rel="stylesheet"  type='text/css' href="/static/css/shared.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Documentation</title>
+</head>
+<body>
+    <div class="horizontal-menu" id="horizontal-menu">
+        <div class="menu-items">
+            <img src="/static/img/icon-menu.png" id="menu-img"    alt="img" style="max-width: 30px; max-height: 30px">
+            <a href="{{ url_for ('index') }}">API</a>
+            <a href="{{ url_for ('documentation_page') }}">Documentation</a>
+            <img src="/static/img/icon-moon.png" id="moon-img"    alt="img" style="height: 30px">
+        </div>
+    </div>
+</body>
+</html>
