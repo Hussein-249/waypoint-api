@@ -24,33 +24,26 @@
     <title>Waypoint API</title>
 </head>
 <body>
-
     <div class="horizontal-menu" id="horizontal-menu">
         <div class="menu-items">
-            <img src="/static/img/icon-menu.png" id="menu-img"    alt="img" style="max-width: 30px; max-height: 30px">
             <a href="{{ url_for ('index') }}">API</a>
             <a href="{{ url_for ('documentation_page') }}">Documentation</a>
-            <img src="/static/img/icon-moon.png" id="moon-img"    alt="img" style="height: 30px">
         </div>
     </div>
-
     <div id="content">
         <div class="api-row">
-
             <div class="block" id="api-wrapper">
-                <h1>Waypoint API</h1>
-
+                <h1>Route</h1>
                 <div class="horizontal" id="horizontal-api-div">
                     <form action="/submit_form" method="POST">
                       <label for="origin">Origin:</label>
                          <br>
                       <input type="text" id="origin" name="origin">
-                         <br>
+                        <div id="add-waypoint-section"></div>
                       <label for="dest">Destination:</label>
                          <br>
                       <input type="text" id="dest" name="dest">
                     </form>
-
                     <div id="add-waypoints">
                         <div class="button" id="add-button">
                             <a>+ Waypoint</a>
@@ -60,7 +53,6 @@
                 </div>
             </div>
             <div class="block" id="map-wrapper">
-                <h1>Waypoint Map</h1>
                 <div id="leaflet-map" class="leaflet-map"></div>
             </div>
         </div>

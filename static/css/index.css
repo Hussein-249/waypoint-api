@@ -1,5 +1,10 @@
 @import url('shared.css');
 
+body
+{
+    min-height: 100%;
+}
+
 
 #content
 {
@@ -16,7 +21,8 @@
     justify-content: left;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    min-height: 85vh;
+    max-height: 85vh;
     margin: 0;
     padding: 0;
 }
@@ -32,8 +38,9 @@
 
 #api-wrapper
 {
-    width: 30%;
+    width: 25%;
     padding-left: 2%;
+    padding-bottom: 0;
 }
 
 
@@ -48,26 +55,23 @@
 .block
 {
     background-color:var(--main-div-colour);
-    padding: 7.5px;
-    margin: 1.5%;
+    padding: 5px;
+    margin: 2.5%;
     margin-bottom: 0;
-    border-radius: 20px;
+    border-radius: 10px;
     min-height: 100%;
 }
 
 
 label
 {
-    margin-bottom: 50%;
-    padding-top: 10px;
-    padding-bottom: 10px;
     font-size: var(--subtitle-font-size);
 }
 
 
 h1
 {
-    font-size: var(--header-font-size);
+    font-size: var(--subtitle-font-size);
     text-align: center;
 }
 
@@ -92,9 +96,12 @@ h1
 {
     border: 2px solid var(--main-font-colour);
     border-radius: 5px;
-    padding: 5px;
-    margin-bottom: 2%;
-    width: 50%;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+
+    width: 75%;
     text-align: center;
     background: var(--main-div-colour);
 
@@ -108,18 +115,20 @@ h1
 
 input[type=text]
 {
-    width: 60%;
-    padding: 2.5px;
+    width: 75%;
+    padding-top: 1px;
+    padding-bottom: 1px;
     margin-top: 2%;
     margin-bottom: 2%;
-    font-size: var(--subtitle-font-size);
+    font-size: var(--paragraph-font-size);
 }
 
 
 .leaflet-map
 {
-    min-height: 130%;
+    height: 100%;
 }
+
 
 form
 {
