@@ -49,7 +49,8 @@ function dynamicAddWaypointDiv() {
         waypointInput.setAttribute('name', 'waypoint-nr-' + additionalWaypoints);
 
         var waypointLabel = document.createElement('label');
-        waypointLabel.setAttribute('for', 'waypoint-label-' + additionalWaypoints);
+        waypointLabel.setAttribute('for', 'waypoint-nr-' + additionalWaypoints);
+        waypointLabel.setAttribute('id', 'waypoint-label-' + additionalWaypoints);
         waypointLabel.textContent = 'Point ' + additionalWaypoints;
 
         if (additionalWaypoints >= 3)

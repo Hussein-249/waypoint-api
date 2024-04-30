@@ -21,7 +21,7 @@
      crossorigin=""></script>
 
     <script src="{{ url_for('static', filename='/Javascript/loadLeaflet.js') }}"></script>
-    <title>Waypoint API</title>
+    <title>Flight Management Computer View</title>
 </head>
 <body>
     <div class="horizontal-menu" id="horizontal-menu">
@@ -33,23 +33,7 @@
     <div id="content">
         <div class="api-row">
             <div class="block" id="api-wrapper">
-                <h1>Route</h1>
                 <div class="horizontal" id="horizontal-api-div">
-                    <form action="/submit_form" method="POST">
-                      <label for="origin">Origin</label>
-                         <br>
-                      <input type="text" id="origin" name="origin">
-                        <div id="add-waypoint-section"></div>
-                      <label for="dest">Destination</label>
-                         <br>
-                      <input type="text" id="dest" name="dest">
-                    </form>
-                    <div id="add-waypoints">
-                        <div class="button" id="add-button">
-                            <a>+ Waypoint</a>
-                        </div>
-                        <button type="submit" class="button" id="submit-button">Submit</button>
-                    </div>
                 </div>
             </div>
             <div class="block" id="map-wrapper">
