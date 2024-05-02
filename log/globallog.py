@@ -11,3 +11,7 @@ logging.basicConfig(filename=log_filename, level=logging.DEBUG)
 def log_message(message: str):
     logging.info(message)
     return
+
+
+def rotating_log_file_handler():
+    return

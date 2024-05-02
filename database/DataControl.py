@@ -22,15 +22,19 @@ class SingletonControlMeta(type):
 
 
 class DataControl(metaclass=SingletonControlMeta):
-    def __init__(self):
+    def __init__(self, dbname):
         from query import _db_connect, query_single_point, db_disconnect
         self.db_connect = _db_connect
         self.query_single_point = query_single_point
         self.db_disconnect = db_disconnect
+        self.dbname = dbname
 
     @classmethod
     def connect_database(cls):
-        return cls().db_connect()
+        return cls().db_connect(cls().dbname)
+
+        # not possible for some reason, look into this later
+        # return cls().db_connect(dbname)
 
     @classmethod
     def find_single_point(cls, waypoint, connection):

@@ -2,14 +2,17 @@ from flask import Flask, jsonify, request, render_template, Blueprint, redirect,
 from log import globallog
 from database.DataControl import DataControl
 
+
 app = Flask(__name__)
 
 blueprint = Blueprint('api_bp', __name__, static_folder='static', static_url_path='/static')
 
 app.register_blueprint(blueprint)
 
+dbname = "Flight-Waypoints"
+
 # declare a single instance of our singleton class
-dc = DataControl()
+dc = DataControl(dbname=dbname)
 
 
 @app.route('/')

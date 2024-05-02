@@ -1,6 +1,7 @@
 import psycopg2
 import os
 
+dbname = "Flight-Waypoints"
 
 class PostgresSetup:
     def __init__(self, dbname):
@@ -82,7 +83,7 @@ def add_from_csv(filename: str, connection):
         cur.close()
 
 
-postgresHandler = PostgresSetup("postgres")
+postgresHandler = PostgresSetup("Flight-Waypoints")
 
 conn = postgresHandler.connect_postgres_database()
 
@@ -90,4 +91,5 @@ create_table("CanadaWaypoints", conn)
 
 # add_from_csv("../resources/CANADA_WAYPTS.csv", conn)
 add_from_csv("CANWAYPOINTS.csv", conn)
+
 conn.close()

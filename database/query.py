@@ -7,6 +7,9 @@ def _db_connect(dbname="postgres"):
         postgres_connection = psycopg2.connect(database=dbname, user="postgres",
                                                password="postgres", host="localhost",
                                                port="5432")
+
+        # immediately committing changes to the database after execution,
+        # since we ar enot manually managing transaction
         postgres_connection.autocommit = True
 
         return postgres_connection
@@ -22,7 +25,7 @@ def query_single_point(waypoint, connection):
 
         cur = connection.cursor(cursor_factory=RealDictCursor)
 
-        query_string = f"SELECT * FROM canada WHERE wpname = %s"    # don't directly include variables in query
+        query_string = f"SELECT * FROM canadawaypoints WHERE wpname = %s"    # don't directly include variables in query
 
         cur.execute(query_string, (waypoint,))  # prevent SQL injection attacks
 
@@ -44,11 +47,11 @@ def find_shortest_route(origin, destination, connection):
     # need to implement typechecking, changes based on whether coord, name, or waypt
     cur = connection.cursor(cursor_factory=RealDictCursor)
 
-    all_points_between = f"SELECT * FROM canada WHERE wpname = %s"    # don't directly include variables in query
+    all_points_between = f"SELECT * FROM canadawaypoints WHERE wpname = %s"    # don't directly include variables in query
 
-    origin_query = f"SELECT lon, lat FROM canada WHERE wpname = %s"  # don't directly include variables in query
+    origin_query = f"SELECT lon, lat FROM canadawaypoints WHERE wpname = %s"  # don't directly include variables in query
 
-    destination_query = f"SELECT lon, lat FROM canada WHERE wpname = %s"
+    destination_query = f"SELECT lon, lat FROM canadawaypoints WHERE wpname = %s"
 
     cur.execute(destination_query, (destination,))
 
