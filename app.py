@@ -92,7 +92,7 @@ def find_route(origin, destination):
 
 @app.route('/error500')
 def force_error():
-    # Simulate a server error by dividing by zero (ZeroDivisionError)
+    # Simulate a server error by dividing by zero
     result = 1 / 0
     del result
     return render_template('error.html')
