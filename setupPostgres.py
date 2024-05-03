@@ -3,6 +3,7 @@ import os
 
 dbname = "Flight-Waypoints"
 
+
 class PostgresSetup:
     def __init__(self, dbname):
         self.name = dbname
@@ -72,7 +73,7 @@ def add_from_csv(filename: str, connection):
     with open(filename, newline='\n') as csv_file:
 
         copy_data = """
-                COPY CanadaWaypoints(wpname, lon, lat) FROM stdin WITH CSV HEADER
+                COPY CanadaWaypoints(wpname, lat, lon) FROM stdin WITH CSV HEADER
                 DELIMITER as ','
                 """
 
