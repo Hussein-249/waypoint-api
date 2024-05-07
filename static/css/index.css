@@ -52,17 +52,6 @@ body
 }
 
 
-.block
-{
-    background-color:var(--main-div-colour);
-    padding: 5px;
-    margin: 1.5%;
-    margin-bottom: 0;
-    border-radius: 10px;
-    min-height: 100%;
-}
-
-
 label
 {
     font-size: var(--subtitle-font-size);
@@ -89,27 +78,6 @@ h1
     padding: 5px;
     width: 50%;
     text-align: center;
-}
-
-
-#add-button, #submit-button
-{
-    border: 2px solid var(--main-font-colour);
-    border-radius: 5px;
-    padding-top: 2.5px;
-    padding-bottom: 2.5px;
-    margin-bottom: 2.5%;
-    margin-top: 2.5%;
-
-    width: 75%;
-    text-align: center;
-    background: var(--main-div-colour);
-
-    &:hover
-    {
-        background: var(--main-font-colour);
-        color: var(--main-div-colour);
-    }
 }
 
 
