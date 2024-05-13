@@ -6,11 +6,6 @@
     <link rel="stylesheet"  type='text/css' href="/static/css/index.css">
     <link rel="stylesheet"  type='text/css' href="/static/css/shared.css">
 
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <!-- Latest Leaflet style and scripts -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -25,25 +20,23 @@
     <script src="{{ url_for('static', filename='/Javascript/loadLeaflet.js') }}"></script>
     <title>Waypoint API</title>
 </head>
-<body>
-    <nav class="flex bg-gray-200" id="horizontal-menu">
-<!--        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto bg-gray-200">-->
-            <div class="text-sm lg:flex-grow">
-              <a href="{{ url_for ('index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-                API
-              </a>
-              <a href="{{ url_for ('documentation_page') }}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                Documentation
-              </a>
-            </div>
-<!--        </div>-->
+<body class="font-mono">
+    <nav class="flex items-center justify-between flex-wrap bg-#1f2937 p-3">
+        <div class="text-xl lg:flex-grow">
+          <a href="{{ url_for ('index') }}" class="block mx-6 lg:inline-block lg:mt-0 hover:text-white">
+            API
+          </a>
+          <a href="{{ url_for ('documentation_page') }}" class="block mx-6 lg:inline-block lg:mt-0 hover:text-white">
+            Documentation
+          </a>
+        </div>
     </nav>
     <div id="content">
         <div class="api-row">
             <div class="block bg-gray-200" id="api-wrapper">
-                <h1>Route</h1>
-                <div class="horizontal" id="horizontal-api-div">
-                    <form action="/submit_form" method="POST">
+                <div class="p-3" id="horizontal-api-div">
+                    <div class="text-xl">Route</div>
+                    <form class="p-2" action="/submit_form" method="POST">
                       <label for="origin">Origin</label>
                          <br>
                       <input type="text" id="origin" name="origin">
@@ -53,10 +46,9 @@
                       <input type="text" id="dest" name="dest">
                     </form>
                     <div id="add-waypoints">
-                        <div class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" id="add-button">
-                            <a>+ Waypoint</a>
-                        </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" id="submit-button">Submit</button>
+                        <button type="button" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" id="add-button"> + Waypoint</button>
+                        <button type="button" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" id="remove-button"> - Waypoint</button>
+                        <button type="submit" class="text-end bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" id="submit-button">Submit</button>
                     </div>
                 </div>
             </div>
@@ -65,8 +57,5 @@
             </div>
         </div>
     </div>
-<!-- component -->
-<!-- Foooter -->
-
 </body>
 </html>

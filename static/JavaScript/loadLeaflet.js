@@ -1,7 +1,7 @@
 var additionalWaypoints = 1
 
 function initializeMap() {
-    // setting the map in the 'leaflet-map' div
+    // setting the map in the 'leaflet-map' div, default focus on Toronto
     var map = L.map('leaflet-map').setView([43.65, -79.35], 9);
 
     // tile layer must be specified, else blank map
@@ -64,7 +64,24 @@ function dynamicAddWaypointDiv() {
 }
 
 
+function removeWaypointDiv() {
+    var removeWayPointButton = document.getElementById('remove-button');
+    var form = document.getElementById('add-waypoint-section');
+
+//    if (additionalWaypoints > 1) {
+//
+//    try {
+//
+//    }
+//
+//    }
+
+    return;
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeMap();
     dynamicAddWaypointDiv();
+    removeWaypointDiv();
 });
