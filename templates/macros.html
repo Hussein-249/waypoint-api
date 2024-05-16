@@ -1,0 +1,12 @@
+{% macro header() %}
+<nav class="flex items-center justify-between flex-wrap bg-#1f2937 p-3">
+    <div class="text-xl lg:flex-grow">
+      <a href="{{ url_for ('index') }}" class="block mx-6 lg:inline-block lg:mt-0 hover:text-white">
+        API
+      </a>
+      <a href="{{ url_for ('documentation_page') }}" class="block mx-6 lg:inline-block lg:mt-0 hover:text-white">
+        Documentation
+      </a>
+    </div>
+</nav>
+{% endmacro %}
