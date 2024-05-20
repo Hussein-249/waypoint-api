@@ -11,3 +11,32 @@
 
     --menu-font-size: clamp(1rem, calc(1.5vw + 1vh), 1.35rem);
 }
+
+
+.bg-zinc-800 {
+    background-color: #27272a;
+}
+
+.bg-zinc-700 {
+    background-color: #3f3f46;
+}
+
+.bg-neutral-800 {
+    background-color: #262626;
+}
+
+.bg-neutral-200 {
+    background-color: #e5e5e5;
+}
+
+.row {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}

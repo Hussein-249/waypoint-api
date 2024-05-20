@@ -19,69 +19,88 @@ function dynamicAddWaypointDiv() {
 
     var addWayPointButton = document.getElementById('add-button');
     var form = document.getElementById('add-waypoint-section');
-    //    var form = document.querySelector('form');
 
     addWayPointButton.addEventListener('click', function() {
 
-    if (additionalWaypoints == 4)
-    {
-        removeTargetInput = document.getElementById('waypoint-nr-' + additionalWaypoints)
-        removeTargetLabel = document.getElementById('waypoint-label-' + additionalWaypoints)
+        if (additionalWaypoints >= 4) {
+            pass;
+        } else {
 
-        form.removeChild(removeTargetInput);
-        form.removeChild(removeTargetLabel);
+            if (additionalWaypoints == 3)
+            {
+                addWayPointButton.innerHTML = 'Max Pts';
+            }
 
-        additionalWaypoints--;
+            additionalWaypoints++;
 
-        return;
-    }
+            var waypointDiv = document.createElement('div');
+            waypointDiv.setAttribute('id', 'waypoint-div-' + additionalWaypoints);
 
+            var waypointInput = document.createElement('input');
+            waypointInput.setAttribute('type', 'text');
+            waypointInput.setAttribute('id', 'waypoint-nr-' + additionalWaypoints);
+            waypointInput.setAttribute('name', 'waypoint-nr-' + additionalWaypoints);
+            waypointInput.setAttribute('class', 'text-black text-sm px-2 mb-4 bg-gray-200 rounded');
 
-        if (additionalWaypoints == 3)
-        {
-//            addWayPointButton.style.display = 'none';
-            addWayPointButton.innerHTML = 'Remove Waypoints';
+            var waypointLabel = document.createElement('label');
+            waypointLabel.setAttribute('for', 'waypoint-nr-' + additionalWaypoints);
+            waypointLabel.setAttribute('id', 'waypoint-label-' + additionalWaypoints);
+            waypointLabel.textContent = 'Point ' + additionalWaypoints;
 
+            waypointDiv.appendChild(waypointLabel);
+            waypointDiv.appendChild(document.createElement('br'));
+
+            waypointDiv.appendChild(waypointInput);
+            waypointDiv.appendChild(document.createElement('br'));
+
+            form.appendChild(waypointDiv);
         }
-
-        additionalWaypoints++;
-
-        var waypointInput = document.createElement('input');
-        waypointInput.setAttribute('type', 'text');
-        waypointInput.setAttribute('id', 'waypoint-nr-' + additionalWaypoints);
-        waypointInput.setAttribute('name', 'waypoint-nr-' + additionalWaypoints);
-
-        var waypointLabel = document.createElement('label');
-        waypointLabel.setAttribute('for', 'waypoint-nr-' + additionalWaypoints);
-        waypointLabel.setAttribute('id', 'waypoint-label-' + additionalWaypoints);
-        waypointLabel.textContent = 'Point ' + additionalWaypoints;
-
-        if (additionalWaypoints >= 3)
-        {
-            form.appendChild(document.createElement('br'));
-        }
-        form.appendChild(waypointLabel);
-        form.appendChild(document.createElement('br'));
-        form.appendChild(waypointInput);
     });
 }
 
 
 function removeWaypointDiv() {
+    var addWayPointButton = document.getElementById('add-button');
     var removeWayPointButton = document.getElementById('remove-button');
     var form = document.getElementById('add-waypoint-section');
 
-//    if (additionalWaypoints > 1) {
-//
-//    try {
-//
-//    }
-//
-//    }
+    removeWayPointButton.addEventListener('click', function() {
 
-    return;
+        try {
+            var targetDiv = document.getElementById('waypoint-div-' + additionalWaypoints);
+            if (additionalWaypoints > 1) {
+                form.removeChild(targetDiv);
+                additionalWaypoints--;
+                addWayPointButton.innerHTML = '+ Waypt';
+
+            }
+        } catch (err) {
+            console.log('RemoveButtonError: ', err);
+        }
+    });
 }
 
+
+ const ctx = document.getElementById('elevation-chart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeMap();

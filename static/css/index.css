@@ -6,23 +6,16 @@
     display: flex;
     justify-content: left;
     flex-direction: row;
-    width: 100%;
-    min-height: 85vh;
-    margin: 0;
-    padding: 0;
 }
 
 
 #map-wrapper
 {
-    background-color: var(--second-div-colour);
-    color: var(--main-div-colour);
     width: 100%;
 }
 
 
 .leaflet-map
 {
-    height: 85vh;
+    height: 70vh;
 }
-

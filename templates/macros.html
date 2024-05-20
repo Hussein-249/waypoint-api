@@ -1,12 +1,39 @@
 {% macro header() %}
-<nav class="flex items-center justify-between flex-wrap bg-#1f2937 p-3">
-    <div class="text-xl lg:flex-grow">
-      <a href="{{ url_for ('index') }}" class="block mx-6 lg:inline-block lg:mt-0 hover:text-white">
+<nav class="flex items-center justify-between flex-wrap text-gray-100 bg-neutral-800 p-2">
+    <div class="text-base lg:flex-grow ">
+      <a href="{{ url_for ('index') }}" class="block mx-6 lg:inline-block lg:mt-0">
         API
       </a>
-      <a href="{{ url_for ('documentation_page') }}" class="block mx-6 lg:inline-block lg:mt-0 hover:text-white">
+        <a href="{{ url_for ('documentation_page') }}" class="block mx-6 lg:inline-block lg:mt-0">
+        User Guide
+      </a>
+      <a href="{{ url_for ('documentation_page') }}" class="block mx-6 lg:inline-block lg:mt-0">
         Documentation
       </a>
     </div>
 </nav>
+{% endmacro %}
+
+{% macro dataDisplay() %}
+<div class="row h-100 w-100">
+    <div class="py-2 px-4 h-100" id="route-info">
+        <div class="border-b-2 border-gray-500 mb-1">Route Information</div>
+        <div id="route-dist">Distance (km)</div>
+        <div class="column" id="o-timezone">Origin Timezone</div>
+        <div class="column" id="d-timezone">Dest. Timezone</div>
+        <div class="column" id="elev-change">Elevation Change (m)</div>
+        <div class="column" id="metar">Dest. METAR (m)</div>
+
+    </div>
+    <div class="py-2 px-4 h-100" id="route-info-res">
+        <div><br></div>
+        <div class="column" id="route-dist-res">:</div>
+        <div class="column" id="o-timezone-res">:</div>
+        <div class="column" id="d-timezone-res">:</div>
+        <div class="column" id="elev-change-res">:</div>
+    </div>
+    <canvas class="row py-2 px-4 w-100 h-100" id="elevation-chart">
+    </canvas>
+<!--    api req https://aviationweather.gov/data/metar/?id=CYOW&hours=0-->
+
 {% endmacro %}

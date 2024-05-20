@@ -20,11 +20,6 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/fmc')
-def flight_management_computer():
-    return render_template('fmc.html')
-
-
 @app.route('/documentation')
 def documentation_page():
     return render_template('documentation.html')
